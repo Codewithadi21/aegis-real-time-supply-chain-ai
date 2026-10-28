@@ -2,6 +2,9 @@
 
 **Google Data Engineer (DAS / Platforms & Devices)-aligned portfolio demonstration**
 
+[![Open Day 1 in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/Codewithadi21/aegis-real-time-supply-chain-ai/blob/main/notebooks/AEGIS_Day1_Colab.ipynb) **Day 1** · [Open Day 2 in Colab](https://colab.research.google.com/github/Codewithadi21/aegis-real-time-supply-chain-ai/blob/main/notebooks/AEGIS_Day2_Advanced.ipynb)
+
+
 This project uses **fully synthetic** electronics sales, stock, supplier and demand data. It combines real cloud messaging, a BigQuery analytical warehouse, supply-chain decision replay, an optional BigQuery ML experiment and grounded supplier-policy retrieval.
 
 > **Status transparency:** Source code, notebook, SQL, synthetic generator and unit tests are included and runnable. Live GCP resources, Dataflow deployment, BigQuery ML training and Gemini API requests are **not claimed to have been deployed/verified on your account** until you run them and capture results.
@@ -38,11 +41,11 @@ Colab Python Sales Event Producer
 
 ## Start here: fastest path
 
-1. Open `notebooks/AEGIS_Day1_Colab.ipynb` in Google Colab.
-2. Follow `docs/CLOUD_SETUP.md` exactly, starting with the billing safety check.
-3. Upload this ZIP in the first notebook cell and authenticate to your GCP project.
+1. Click the **Open Day 1 in Colab** badge above to launch the notebook directly from GitHub.
+2. Follow `docs/CLOUD_SETUP.md`, starting with the billing safety check.
+3. Run the first code cell to clone this repository automatically; then authenticate to your GCP project.
 4. Execute notebook cells sequentially. Set `PROJECT_ID` to your own project ID.
-5. Create the BigQuery export subscription **before** publishing live events.
+5. Run the `scripts.create_subscription` cell to create the BigQuery export subscription **before** publishing live events (dataset-scoped Pub/Sub service-agent permission may be required).
 6. Run 20 events and a replay, verify `raw_sales_events`, `v_valid_sales` and `v_stock_risk` in BigQuery Studio.
 7. Day 2: see `docs/DAY2_ADVANCED.md` for optional ML/RAG/Dataflow steps.
 
@@ -59,7 +62,8 @@ python -m pytest -q
 ```bash
 python -m pip install -r requirements-gcp.txt
 python -m scripts.setup_gcp --project-id YOUR_REAL_PROJECT_ID
-# In Cloud Console create export subscription as described in docs/CLOUD_SETUP.md
+python -m scripts.create_subscription --project-id YOUR_REAL_PROJECT_ID
+# If permissions fail, use the manual setup described in docs/CLOUD_SETUP.md
 python -m scripts.publish_events --project-id YOUR_REAL_PROJECT_ID --count 20 --replay-first
 python -m scripts.run_queries --project-id YOUR_REAL_PROJECT_ID
 ```
