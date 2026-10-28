@@ -8,17 +8,17 @@
 ## Open these browser tabs
 1. https://console.cloud.google.com/projectcreate → create project `aegis-supply-chain-ai` (the real **project ID** may differ).
 2. https://console.cloud.google.com/apis/library → select your project → enable Pub/Sub, BigQuery, Dataflow, Cloud Storage. Vertex AI optional later.
-3. https://colab.research.google.com/ → create notebook or open `notebooks/AEGIS_Day1_Colab.ipynb` from this ZIP.
+3. https://colab.research.google.com/github/Codewithadi21/aegis-real-time-supply-chain-ai/blob/main/notebooks/AEGIS_Day1_Colab.ipynb → launch Day 1 directly from GitHub.
 4. https://console.cloud.google.com/bigquery → for checking dataset, tables and SQL output.
 5. https://console.cloud.google.com/cloudpubsub/topic/list → for checking Pub/Sub topic and subscriptions.
 
 ## Day 1, Colab execution order
-1. Open the included notebook in Colab. If using the ZIP download, upload the ZIP in its first cell. **Do not share your credentials**.
+1. Open the notebook from GitHub in Colab. Run the Git clone cell; no ZIP upload is needed. **Do not share your credentials**.
 2. Install Python requirements. Authenticate with `auth.authenticate_user()`.
 3. Set `PROJECT_ID` to **real** GCP project ID (not project display name), e.g. `aegis-supply-chain-ai-123`.
 4. Generate six synthetic CSVs. Run local risk/retrieval demo and tests.
 5. Execute setup script. It creates the `aegis_warehouse` BigQuery dataset, six reference tables, raw ingestion table, two sets of SQL views, and Pub/Sub topic `aegis-sales-events`.
-6. **Create a BigQuery subscription manually in the Console:** Pub/Sub → Subscriptions → Create subscription. Subscription ID: `aegis-to-bigquery`; select topic `aegis-sales-events`. Delivery type: **Write to BigQuery**. Choose project → dataset `aegis_warehouse` → table `raw_sales_events`. Schema Configuration: **Don't use a schema**; **Write metadata disabled**. Click Create.
+6. **Create a BigQuery subscription:** run the `!python -m scripts.create_subscription --project-id {PROJECT_ID}` notebook cell. If permissions prevent automatic creation, go to Pub/Sub → Subscriptions → Create subscription. Subscription ID: `aegis-to-bigquery`; topic `aegis-sales-events`; delivery **Write to BigQuery**; destination `PROJECT_ID.aegis_warehouse.raw_sales_events`; **Don't use a schema** and **Write metadata disabled**.
 7. **Permissions if create fails:** Pub/Sub service agent `service-PROJECT_NUMBER@gcp-sa-pubsub.iam.gserviceaccount.com` needs `BigQuery Data Editor` on the destination dataset (or a sufficiently scoped resource). Google official docs: https://cloud.google.com/pubsub/docs/create-bigquery-subscription. Ask for help if your GCP Console shows a policy error; do not assign Owner broadly.
 8. Publish `--count 20 --replay-first`. Wait a short period for export; rerun KPI query until raw rows appear (streaming is eventually visible).
 9. Verify raw events > 0, validated sales = number of unique valid `event_id`, duplicate replay does not double-count, stock-risk view shows expected output.
