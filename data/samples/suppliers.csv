@@ -1,0 +1,4 @@
+supplier_id,supplier_name,country,nominal_lead_days
+SUP_01,Northstar Components,India,7
+SUP_02,BrightCore Electronics,Singapore,9
+SUP_03,Horizon Devices,United Kingdom,6

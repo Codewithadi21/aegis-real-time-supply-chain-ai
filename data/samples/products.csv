@@ -1,0 +1,7 @@
+product_id,product_name,category,supplier_id,unit_price_inr,unit_cost_inr
+LAPTOP_001,Laptop Pro 14,Laptop,SUP_01,75000,52000
+LAPTOP_002,Laptop Air 13,Laptop,SUP_01,56000,39000
+PHONE_001,Phone Nova X,Phone,SUP_02,39000,24000
+PHONE_002,Phone Nova Lite,Phone,SUP_02,22000,13500
+TABLET_001,Tablet View 11,Tablet,SUP_03,31000,20500
+TABLET_002,Tablet View Mini,Tablet,SUP_03,19000,11700

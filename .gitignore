@@ -1,0 +1,11 @@
+__pycache__/
+.pytest_cache/
+*.py[cod]
+.ipynb_checkpoints/
+.env
+*.json.key
+service-account*.json
+data/generated/
+*.egg-info/
+dist/
+build/
