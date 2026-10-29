@@ -79,3 +79,20 @@ Run the independent [DataPulse Local AI Colab notebook](notebooks/DataPulse_Loca
 
 ## DataPulse Guide AI — project tutor + incident investigation
 The [Guide AI Colab notebook](notebooks/DataPulse_Guide_AI_Colab.ipynb) demonstrates two grounded assistant modes: (1) explaining how DataPulse works from checked-in project documentation and (2) analyzing the verified synthetic incident report. `datapulse/guide_assistant.py` uses local **TF-IDF source retrieval**, optional local Qwen generation, explicit source paths, and a retrieval-only fallback. Read [the user guide](docs/DATAPULSE_USER_GUIDE.md). This is not a trained-from-scratch LLM, true vector embedding RAG, an autonomous repair agent, or a Vertex AI deployment. GitHub code is committed; user-side Colab LLM inference remains to be validated.
+
+## Final completion route — DataPulse end-to-end verification
+Start with the [**Final End-to-End Colab Notebook**](notebooks/DataPulse_Final_End_to_End_Colab.ipynb). It performs:
+1. Fresh GitHub pull, tests, deterministic synthetic replay and incident report.
+2. No-API-key project-guide retrieval, with source documents.
+3. Optional BigQuery upload and SQL verification using your own authenticated GCP trial project.
+4. **NEW:** Pub/Sub topic **and subscription setup before publishing**, publish one incident, consume/validate it, append to `datapulse_ai.incident_events` and acknowledge after a successful BigQuery load.
+5. Final SQL verification of incident rows and a portfolio screenshot checklist.
+
+Cloud commands (run from `datapulse-ai/` with authenticated Google user and APIs enabled):
+```bash
+python -m cloud.bigquery_load --project-id YOUR_PROJECT_ID
+python -m cloud.incident_consumer --project-id YOUR_PROJECT_ID --setup-only
+python -m cloud.pubsub_demo --project-id YOUR_PROJECT_ID
+python -m cloud.incident_consumer --project-id YOUR_PROJECT_ID
+```
+For local-only use run `python -m pytest -q` and `python -m datapulse --rows 5000`. There is no Gemini or Vertex AI requirement to finish the project. Qwen local LLM remains an optional companion notebook. **The new cloud consumer is a single-message demonstration, not a continuously hosted subscriber.** Delivery is at least once and BigQuery may accumulate duplicates during retries; production would require a long-running worker, dead-letter queue, idempotent ingestion and monitoring. GCP execution and local full-suite results must be verified in the user's Colab and are not implied by code existing on GitHub.
