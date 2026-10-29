@@ -1,0 +1,14 @@
+{
+  "warning": "Seeded synthetic example, not live production metrics",
+  "seed": 42,
+  "rows": 5000,
+  "test_rows": 1500,
+  "prediction_flips": 340,
+  "prediction_flip_rate": 0.2267,
+  "baseline_auc": 0.8157,
+  "changed_auc": 0.5414,
+  "baseline_false_negatives": 238,
+  "changed_false_negatives": 458,
+  "schema_checks_passed_after_shift": true,
+  "semantic_checks_passed_after_shift": false
+}
