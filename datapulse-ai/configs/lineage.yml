@@ -1,0 +1,20 @@
+# Manually declared toy lineage; not automatically discovered lineage.
+nodes:
+  - id: raw.customer_engagement
+    type: source
+  - id: curated.customer_features
+    type: feature_table
+  - id: model.customer_churn_v1
+    type: sklearn_model
+  - id: decision.retention_contact
+    type: business_decision
+edges:
+  - from: raw.customer_engagement
+    to: curated.customer_features
+    columns: [engagement_events_30d]
+  - from: curated.customer_features
+    to: model.customer_churn_v1
+    columns: [engagement_events_30d, support_tickets_30d, tenure_months, spend_30d]
+  - from: model.customer_churn_v1
+    to: decision.retention_contact
+    columns: [predicted_churn_probability]
