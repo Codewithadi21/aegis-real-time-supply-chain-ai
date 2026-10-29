@@ -25,6 +25,14 @@ def local_checks(root: Path) -> dict:
     summary_path = artifacts / "replay_summary.json"
     report_path = artifacts / "incident_report.json"
     csv_path = artifacts / "prediction_replay.csv"
+    if not (summary_path.exists() and report_path.exists() and csv_path.exists()):
+        demo = subprocess.run(
+            [sys.executable, "-m", "datapulse", "--rows", "5000"],
+            cwd=root, text=True, capture_output=True,
+        )
+        print("Local replay:", demo.stdout[-1000:])
+        if demo.returncode:
+            print("Local replay error:", demo.stderr[-1000:])
     checks = {"pytest": result.returncode == 0,
               "replay_summary_exists": summary_path.exists(),
               "incident_report_exists": report_path.exists(),
