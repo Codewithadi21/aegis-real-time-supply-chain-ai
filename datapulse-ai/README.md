@@ -73,3 +73,6 @@ More: [business brief](docs/PROJECT_BRIEF.md) · [architecture decisions](docs/A
 
 ## Security
 Never commit production data, OAuth tokens, API keys, or service-account key files. `.gitignore` excludes `.env`, artifacts, and credential-like filenames.
+
+## Free local LLM — no Gemini billing required
+Run the independent [DataPulse Local AI Colab notebook](notebooks/DataPulse_Local_AI_Colab.ipynb) to explain the **real** DataPulse incident report using the open-weight [Qwen2.5-1.5B-Instruct](https://huggingface.co/Qwen/Qwen2.5-1.5B-Instruct) model. This integration uses a local `datapulse/local_llm.py` adapter and `requirements-local-llm.txt`: no Gemini API key, Vertex AI account, or model API billing required. Free Colab GPU availability is limited and model weights download on first run. The original, deterministic investigator remains authoritative; the LLM adds a reviewable explanation, not a proven root cause or autonomous remediation. The new code is committed, but **live model inference in the user's Colab is not yet verified**.
