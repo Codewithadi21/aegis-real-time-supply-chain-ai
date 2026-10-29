@@ -32,7 +32,7 @@ def investigate(summary: dict) -> dict:
     }
 
 
-def optional_gemini_explanation(report: dict, model_name: str = "gemini-3.5-flash-lite") -> str:
+def optional_gemini_explanation(report: dict, model_name: str = "gemini-3.8-flash") -> str:
     """Calls Gemini only with explicit configured credentials; not needed for core demo.
 
     Use GOOGLE_API_KEY in a private runtime, never commit secrets or generated credentials.
