@@ -103,3 +103,6 @@ After authenticating inside Colab and installing `requirements-gcp.txt`, run:
 python -m cloud.final_audit --project-id YOUR_PROJECT_ID
 ```
 The audit checks current local tests and replay artifacts, cloud table contents, real prediction flips, stored incident-message IDs, Pub/Sub topic, and subscription-to-topic linkage. It generates missing **local synthetic** replay artifacts but **does not create, publish, consume or alter cloud resources**. BigQuery read queries can incur small eligible charges. The audit saves `artifacts/final_audit.json` and prints `DATAPULSE ONE-SHOT PORTFOLIO DEMO: VERIFIED` only when all assertions pass. Capture the output to document actual end-to-end execution. This validates the one-shot demo, not a production-grade continuously running data platform.
+
+## Showcase portfolio
+A public-facing [DataPulse portfolio case-study webpage](portfolio/index.html) presents the problem, architecture, reproducible synthetic results, industry relevance, test evidence and a concise interview pitch. The page is standalone HTML; GitHub Pages needs to be enabled by the repository owner to publish it as a browsable website. The HTML itself makes no live GCP verification claims.
