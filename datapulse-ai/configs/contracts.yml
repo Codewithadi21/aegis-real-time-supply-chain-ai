@@ -1,0 +1,20 @@
+# Data contract is explanatory; executable checks live in datapulse/quality.py and drift.py.
+source: customer_analytics
+owner: data-platform-team
+version: 1
+primary_key: customer_id
+schema:
+  customer_id: string
+  engagement_events_30d: nonnegative_integer
+  purchases_30d: nonnegative_integer
+  support_tickets_30d: nonnegative_integer
+  tenure_months: nonnegative_integer
+  spend_30d: nonnegative_float
+  churned_next_30d: binary_integer
+semantic_expectations:
+  engagement_events_30d: "Number of purchase events in the last 30 days; not logins or sessions"
+  purchases_30d: "Independently sourced count of purchases in last 30 days"
+  comparison: "Should match within 1% row-level mismatch on synthetic demo"
+security:
+  data: synthetic_only
+  automated_production_mutations: forbidden
