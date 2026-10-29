@@ -46,8 +46,14 @@ def setup_subscription(project_id: str, topic_id: str = "datapulse-incidents",
     from google.api_core.exceptions import AlreadyExists
     from google.cloud import pubsub_v1
 
+    publisher = pubsub_v1.PublisherClient()
+    topic = publisher.topic_path(project_id, topic_id)
+    try:
+        publisher.create_topic(request={"name": topic})
+        print("Created topic:", topic)
+    except AlreadyExists:
+        print("Topic already exists:", topic)
     subscriber = pubsub_v1.SubscriberClient()
-    topic = subscriber.topic_path(project_id, topic_id)
     name = subscriber.subscription_path(project_id, subscription_id)
     try:
         subscriber.create_subscription(request={"name": name, "topic": topic})
@@ -105,7 +111,7 @@ def consume_once(project_id: str, dataset_id: str = "datapulse_ai",
             ), location="US"
         )
         job.result()
-    except (ValueError, Exception):
+    except Exception:
         # Deliberately do not acknowledge malformed or failed loads. Operators
         # must investigate and may need to seek/ack a poison message.
         print("Message not acknowledged. Review payload, schema, or BQ permission.")
