@@ -96,3 +96,10 @@ python -m cloud.pubsub_demo --project-id YOUR_PROJECT_ID
 python -m cloud.incident_consumer --project-id YOUR_PROJECT_ID
 ```
 For local-only use run `python -m pytest -q` and `python -m datapulse --rows 5000`. There is no Gemini or Vertex AI requirement to finish the project. Qwen local LLM remains an optional companion notebook. **The new cloud consumer is a single-message demonstration, not a continuously hosted subscriber.** Delivery is at least once and BigQuery may accumulate duplicates during retries; production would require a long-running worker, dead-letter queue, idempotent ingestion and monitoring. GCP execution and local full-suite results must be verified in the user's Colab and are not implied by code existing on GitHub.
+
+## Final read-only acceptance check
+After authenticating inside Colab and installing `requirements-gcp.txt`, run:
+```bash
+python -m cloud.final_audit --project-id YOUR_PROJECT_ID
+```
+The audit checks current local tests and replay artifacts, cloud table contents, real prediction flips, stored incident-message IDs, Pub/Sub topic, and subscription-to-topic linkage. It generates missing **local synthetic** replay artifacts but **does not create, publish, consume or alter cloud resources**. BigQuery read queries can incur small eligible charges. The audit saves `artifacts/final_audit.json` and prints `DATAPULSE ONE-SHOT PORTFOLIO DEMO: VERIFIED` only when all assertions pass. Capture the output to document actual end-to-end execution. This validates the one-shot demo, not a production-grade continuously running data platform.
