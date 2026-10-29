@@ -82,10 +82,46 @@ h1,h2,h3,.logo,.stat .num{font-family:"Space Grotesk","DM Sans",system-ui,sans-s
 @media(prefers-reduced-motion:reduce){.art-orbit,.art-core{animation:none!important}}
 @media print{.hero-art{display:none!important}.hero>.container{display:block}.hero{min-height:0}.hero h1{color:#12223a}.edition-chip{color:#733c74}.stat,.surface,.arch,.result-card{box-shadow:none}}
 
+
+/* Two-part project-story system */
+.story-section{background:radial-gradient(ellipse at 92% 18%,#32204d50,transparent 45%),radial-gradient(ellipse at 4% 80%,#082c3855,transparent 42%),#070609!important}
+.story-switch{display:flex;flex-wrap:wrap;gap:12px;margin:28px 0 35px}
+.story-switch a{padding:12px 19px;border-radius:13px;background:#181022;border:1px solid #ae7aff77;color:#e8ddff;font-weight:800;font-size:13px;transition:background .2s,transform .2s}
+.story-switch a:hover{background:#3f2058;transform:translateY(-3px)}
+.story-part{margin-top:42px;padding:38px;border-radius:28px;background:linear-gradient(135deg,#16111e,#0a0c13);border:1px solid #8f6ae24d;scroll-margin-top:100px}
+.story-part:nth-of-type(2){background:linear-gradient(145deg,#111524,#100b1c)}
+.part-label{display:flex;align-items:center;gap:20px;margin-bottom:31px}
+.part-num{width:66px;height:66px;flex:none;display:grid;place-items:center;background:linear-gradient(135deg,#fb54b6,#9754ec);border-radius:21px;color:#fff;font:800 30px/1 "Space Grotesk",sans-serif;box-shadow:0 0 40px #b04aff55}
+.part-num.two{background:linear-gradient(135deg,#23ddef,#795cf7)}
+.part-label h3{margin:5px 0 0;font-size:clamp(26px,3vw,36px);letter-spacing:-.05em}
+.story-panels{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+.story-panel{border-radius:18px;border:1px solid #ffffff24;background:#07080fc9;padding:27px;transition:transform .25s,border-color .25s}
+.story-panel:hover{border-color:#ae7aff95;transform:translateY(-4px)}
+.panel-index{font-size:11px;letter-spacing:.14em;color:#ee8fcf;font-weight:850}
+.story-part:has(.part-num.two) .panel-index{color:#7ce7f6}
+.story-panel h4{margin:12px 0 9px;font-size:21px;line-height:1.25;letter-spacing:-.04em}
+.story-panel p{margin:0;color:#bcb9ce;font-size:14px;line-height:1.78}
+.story-panel strong{color:#f7ecff}
+.story-panel code,.lessons code{color:#87e8fb;font-size:.92em}
+.story-conclusion{margin-top:17px;border:1px solid #a58aff55;background:linear-gradient(90deg,#4b275a50,#152e3d50);padding:19px 23px;border-radius:16px}
+.story-conclusion span{display:block;font-size:11px;font-weight:900;letter-spacing:.16em;color:#7aeaf5}
+.story-conclusion p{color:#e5e1f2;margin:7px 0 0;font-size:16px}
+.lessons{border:1px solid #4b526f;margin-top:18px;border-radius:19px;padding:26px;background:#07090f}
+.lessons h4{font-size:22px;letter-spacing:-.04em;margin:0 0 13px}
+.lesson-row{display:flex;align-items:start;gap:16px;padding:17px 0;border-bottom:1px solid #ffffff18}
+.lesson-row:last-child{border-bottom:0}
+.lesson-number{font-size:13px;color:#fc8dcb;font-weight:900;flex:none}
+.lesson-row b{font-size:15px}
+.lesson-row p{margin:5px 0 0;color:#aaa9be;font-size:14px}
+.closing-cta{margin-top:28px;border-radius:23px;padding:33px;background:linear-gradient(105deg,#200d32,#082631);border:1px solid #a97aff68}
+.closing-cta h3{font-size:clamp(25px,3vw,37px);letter-spacing:-.05em;margin:0 0 10px}
+.closing-cta p{color:#bebace;max-width:900px}
+@media(max-width:720px){.story-part{padding:22px}.story-panels{grid-template-columns:1fr}.part-label{gap:13px}.part-num{height:51px;width:51px;font-size:23px;border-radius:14px}.story-panel{padding:21px}.closing-cta{padding:23px}}
+@media print{.story-part,.story-panel,.lessons,.closing-cta,.story-conclusion{background:#f4f5fb!important;color:#1c2840!important;border-color:#d6d6df}.story-panel p,.lesson-row p,.closing-cta p{color:#526176!important}.story-panel strong{color:#1b2440}.story-switch{display:none}.panel-index,.story-conclusion span{color:#6d458a}.story-part{break-inside:auto}.story-panel{break-inside:avoid}}
 </style>
 </head><body>
 <a href="#main" class="skip">Skip to content</a>
-<header class="site-header"><div class="container nav-wrap"><a class="logo" href="#home" aria-label="DataPulse AI homepage"><span class="logo-mark">◈</span>DataPulse <em>AI</em></a><nav class="nav" aria-label="Main navigation"><a href="#problem">Problem</a><a href="#architecture">Architecture</a><a href="#results">Results</a><a href="#impact">Industry</a><a href="#proof">Proof</a><a class="nav-cta" href="https://github.com/Codewithadi21/aegis-real-time-supply-chain-ai/tree/main/datapulse-ai" target="_blank" rel="noopener noreferrer">GitHub ↗</a></nav></div></header>
+<header class="site-header"><div class="container nav-wrap"><a class="logo" href="#home" aria-label="DataPulse AI homepage"><span class="logo-mark">◈</span>DataPulse <em>AI</em></a><nav class="nav" aria-label="Main navigation"><a href="#problem">Problem</a><a href="#architecture">Architecture</a><a href="#results">Results</a><a href="#impact">Industry</a><a href="#proof">Proof</a><a href="#story">Project story</a><a class="nav-cta" href="https://github.com/Codewithadi21/aegis-real-time-supply-chain-ai/tree/main/datapulse-ai" target="_blank" rel="noopener noreferrer">GitHub ↗</a></nav></div></header>
 <main id="main">
 <section class="hero" id="home"><div class="glow g1"></div><div class="glow g2"></div><div class="glow g3"></div><div class="container"><div class="hero-copy">
 <div class="edition-chip"><i></i> PRISM EDITION / V2.0 — LIVE CASE STUDY</div><div class="eyebrow">Data engineering × ML reliability</div>
@@ -145,9 +181,38 @@ python -m pytest -q
 python -m datapulse --rows 5000</pre>
 <div class="source-links"><a target="_blank" rel="noopener noreferrer" href="https://github.com/Codewithadi21/aegis-real-time-supply-chain-ai/tree/main/datapulse-ai">Project source ↗</a><a target="_blank" rel="noopener noreferrer" href="https://github.com/Codewithadi21/aegis-real-time-supply-chain-ai/blob/main/datapulse-ai/notebooks/DataPulse_Final_End_to_End_Colab.ipynb">Executed Colab notebook ↗</a><a target="_blank" rel="noopener noreferrer" href="https://github.com/Codewithadi21/aegis-real-time-supply-chain-ai/tree/main/datapulse-ai/tests">Automated tests ↗</a><a target="_blank" rel="noopener noreferrer" href="https://github.com/Codewithadi21/aegis-real-time-supply-chain-ai/blob/main/datapulse-ai/docs/ARCHITECTURE.md">Architecture documentation ↗</a></div>
 </div></section>
-<section id="story" style="background:#0b0911"><div class="container"><div class="reveal"><div class="section-kicker pink">06 / The interview story</div><h2 class="heading">Explain DataPulse in <span class="gradient-text">90 seconds.</span></h2></div>
-<blockquote class="pitch reveal">“I built DataPulse AI to explore a data engineering blind spot: a source field can remain technically valid while silently changing its business meaning. I reproduced this with synthetic customer data, a fixed churn model and the same evaluation cohort. The schema checks passed, but semantic checks failed. In the controlled replay, 340 predictions changed and model ROC-AUC fell from 0.8157 to 0.5414. The system connects data checks and drift analysis to an evidence-based incident report, with BigQuery and Pub/Sub integrations. These are synthetic experimental results, not claims of actual customer losses.”</blockquote>
-<div class="actions"><a class="btn btn-primary" href="https://github.com/Codewithadi21/aegis-real-time-supply-chain-ai/tree/main/datapulse-ai" target="_blank" rel="noopener noreferrer">Explore the GitHub repository ↗</a><button class="btn btn-outline" type="button" onclick="window.print()">Save this case study as PDF ↓</button></div>
+
+<section id="story" class="story-section"><div class="container">
+<div class="reveal"><div class="section-kicker pink">06 / The project story</div><h2 class="heading">From a silent data failure to <span class="gradient-text">measurable ML impact.</span></h2>
+<p class="subheading">A two-part case study: first, the business challenge and outcome; second, the engineering decisions, verification approach, and lessons from building the prototype.</p></div>
+<div class="story-switch reveal" aria-label="Explore both sides of the project"><a href="#business-story">01 · Challenge & impact ↘</a><a href="#engineering-story">02 · Engineering & lessons ↘</a></div>
+<div id="business-story" class="story-part reveal"><div class="part-label"><span class="part-num">01</span><div><div class="section-kicker">The challenge & outcome</div><h3>The reason DataPulse exists.</h3></div></div>
+<div class="story-panels">
+<article class="story-panel"><div class="panel-index">01 / THE PROBLEM</div><h4>What did we solve?</h4><p>An upstream producer changes <code>engagement_events_30d</code> from a count of purchases into a count of logins. The field name and numeric data type stay the same, so conventional schema checks continue to pass—even though an existing churn model is now reading a different business signal.</p></article>
+<article class="story-panel"><div class="panel-index">02 / BUSINESS RELEVANCE</div><h4>Why would a company care?</h4><p>A data pipeline can be available and technically healthy while downstream analytics or ML decisions become unreliable. DataPulse demonstrates how to surface that hidden gap and give teams evidence before deciding whether a feature refresh or model-dependent process needs review.</p></article>
+<article class="story-panel"><div class="panel-index">03 / SOLUTION STACK</div><h4>What did we build it with?</h4><p><strong>Python, Pandas, NumPy, scikit-learn, SQL, Google BigQuery and Pub/Sub.</strong> The workflow combines data contracts, PSI/KS drift checks, a fixed-model paired replay, structured incident reports, and a one-shot cloud event path. GitHub Actions tests the reproducible core.</p></article>
+<article class="story-panel"><div class="panel-index">04 / MEASURED EVIDENCE</div><h4>What did it achieve?</h4><p>Across <strong>1,500 held-out synthetic customers</strong>, <strong>340 predictions flipped (22.67%)</strong>. ROC-AUC changed from <strong>0.8157 to 0.5414</strong>; false negatives increased from <strong>238 to 458</strong>. <strong>25 automated tests passed</strong> in the saved Colab run. These are experimental results, not measured company losses.</p></article>
+</div>
+<div class="story-conclusion"><span>THE TAKEAWAY</span><p><strong>Data quality is more than valid columns:</strong> it includes protecting the business meaning of features that drive decisions.</p></div>
+</div>
+<div id="engineering-story" class="story-part reveal"><div class="part-label"><span class="part-num two">02</span><div><div class="section-kicker violet">The engineering & lessons</div><h3>How we proved the failure mode.</h3></div></div>
+<div class="story-panels">
+<article class="story-panel"><div class="panel-index">01 / DESIGN CHOICES</div><h4>How was the architecture designed?</h4><p>Generate trusted and changed feature snapshots; validate technical and semantic contracts; compare distributions; replay both inputs against the same churn model and held-out customer IDs; aggregate prediction changes and labeled metrics; then produce a deterministic incident report. BigQuery stores analysis tables, and Pub/Sub transports one synthetic incident into incident history.</p></article>
+<article class="story-panel"><div class="panel-index">02 / CONTROLLED REPLAY</div><h4>Why use a fixed-model replay?</h4><p>Retraining a model or changing the evaluation cohort would introduce other explanations for prediction differences. Holding the model and customer IDs constant isolates the comparison to the changed feature snapshot. It shows model sensitivity under controlled conditions—not proof of a causal business loss.</p></article>
+<article class="story-panel"><div class="panel-index">03 / DRIFT DETECTION</div><h4>How did we detect semantic drift?</h4><p>Technical checks assessed structure, types, completeness and IDs. PSI and KS revealed distribution differences, but statistics alone could not prove the field's business meaning changed. An explicitly documented semantic expectation and an independent synthetic purchases count provided the additional signal that distinguished logins from purchases.</p></article>
+<article class="story-panel"><div class="panel-index">04 / RESULT VALIDATION</div><h4>How did we validate the outcome?</h4><p>Seeded reproducible data, paired customer-level before/after predictions, observed labels, AUC and false negatives, contract checks, incident JSON, and the saved Colab result of 25 passing tests. BigQuery queries and Pub/Sub acknowledgement provide an additional cloud verification path; the project author completed those cloud steps, while the private console outputs are not publicly embedded.</p></article>
+</div>
+<div class="lessons"><h4>Implementation challenges & what they taught us</h4>
+<div class="lesson-row"><span class="lesson-number">01</span><div><b>Colab dependencies and project configuration</b><p>Missing Pub/Sub packages and an unchanged placeholder assertion interrupted initial execution. Explicit package setup, proper authentication and consistent <code>PROJECT_ID</code> configuration made the notebook reproducible.</p></div></div>
+<div class="lesson-row"><span class="lesson-number">02</span><div><b>Gemini API billing did not match GCP trial availability</b><p>The optional Gemini Developer API returned a payment-related error even when cloud trial credits were available. The project therefore kept investigation metrics deterministic and made LLM explanations optional rather than blocking the core pipeline.</p></div></div>
+<div class="lesson-row"><span class="lesson-number">03</span><div><b>Publishing is not the same as consuming</b><p>An initial Pub/Sub demonstration only published metadata. A subscription, validated consumer, BigQuery incident-history write and post-write acknowledgement were added to demonstrate a complete one-shot path.</p></div></div>
+<div class="lesson-row"><span class="lesson-number">04</span><div><b>Portfolio deployment had its own failure mode</b><p>GitHub Pages initially returned 404 because Pages had not been configured for Actions. Enabling Pages and successfully running the deployment workflow solved the website-hosting issue; it was separate from the DataPulse pipeline.</p></div></div>
+</div>
+<div class="story-conclusion"><span>ENGINEERING LESSON</span><p><strong>Reproducible evidence beats an attractive alert.</strong> First prove what changed, then quantify decision impact, preserve an audit trail, and keep potentially disruptive remediation under human review.</p></div>
+</div>
+<div class="closing-cta reveal"><h3>Working prototype today. <span class="gradient-text">Built for an extensible future.</span></h3><p>DataPulse is a completed one-shot, synthetic proof of concept. Production operation would require continuously running services, source-governed semantic contracts, automatic lineage, idempotent processing, monitoring, IAM and safe remediation workflows. A separate DataForge AI copilot can be connected later without changing the evidence-driven core.</p>
+<div class="actions"><a class="btn btn-primary" href="https://github.com/Codewithadi21/aegis-real-time-supply-chain-ai/tree/main/datapulse-ai" target="_blank" rel="noopener noreferrer">Explore the source code ↗</a><a class="btn btn-outline" href="https://github.com/Codewithadi21/aegis-real-time-supply-chain-ai/blob/main/datapulse-ai/notebooks/DataPulse_Final_End_to_End_Colab.ipynb" target="_blank" rel="noopener noreferrer">See executed notebook ↗</a><button class="btn btn-outline" type="button" onclick="window.print()">Save case study as PDF ↓</button></div>
+</div>
 </div></section>
 </main>
 <footer class="footer"><div class="container footer-inner"><div><a class="logo" href="#home"><span class="logo-mark">◈</span>DataPulse <em>AI</em></a><p>Built by <b>Adi Shree Rastogi</b></p></div><p class="fine">Portfolio case study · October 2026 · All measured experiment outcomes are synthetic. Google Cloud steps were run and verified by the project author; independent public access to the private cloud console is not provided. This is an educational one-shot proof of concept, not a production monitoring service.</p></div></footer>
