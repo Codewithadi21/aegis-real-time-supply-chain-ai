@@ -68,6 +68,10 @@ python -m scripts.publish_events --project-id YOUR_REAL_PROJECT_ID --count 20 --
 python -m scripts.run_queries --project-id YOUR_REAL_PROJECT_ID
 ```
 
+## Databricks to BigQuery migration demo
+
+[Run the inventory migration and stockout reconciliation demo](migrations/databricks_to_bigquery/README.md). It uses the existing AEGIS sample to show how a stale record can change a stockout alert while row counts and keys still match.
+
 ## Tech stack and JD mapping
 
 | Google JD skill | Implementation evidence |
